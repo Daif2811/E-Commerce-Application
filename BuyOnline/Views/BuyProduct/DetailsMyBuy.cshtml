@@ -1,0 +1,87 @@
+﻿@model BuyOnline.Models.BuyProduct
+
+<div class="row">
+    <h2 class="text-center page-header" style="background-color:black; color:white; padding:10px;">Details My Order</h2>
+    <hr />
+</div>
+
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.ProductName)
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BuyDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuyDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.ProductImage)
+        </dt>
+        <dd>
+            <img src="~/Images/Products/@Html.DisplayFor(model => model.Product.ProductImage)" alt="Image" class="thumbnail" style="width:250px; height:340px;" /> 
+        </dd>
+
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "EditBuy", new { id = Model.Id }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Cancel", "CancelBuy", new { id = Model.Product.ProductId }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back To Home", "Index","Home", null, new { @class = "btn btn-warning" })
+</p>
+

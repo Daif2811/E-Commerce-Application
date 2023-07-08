@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BuyOnline.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Customers";
+}
+
+<div class="row">
+    <h2 class="text-center page-header" style="background-color:black; color:white; padding:10px;">All Customers</h2>
+    <hr />
+</div>
+
+<div class="row">
+    <table class="table table-bordered table-striped table-hover text-center">
+        <tr>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.UserType)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserType)
+                </td>
+
+                <td>
+                    @Html.ActionLink("His Buyings", "CustomerBuyings", new { id = item.Id }, new { @class="btn btn-primary"})
+                  </td>
+            </tr>
+        }
+
+    </table>
+</div>

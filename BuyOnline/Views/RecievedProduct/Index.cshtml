@@ -1,0 +1,45 @@
+﻿@model IEnumerable<BuyOnline.Models.RecievedProduct>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <h2 class="text-center page-header" style="background-color:black; color:white; padding:10px;">Recieved Orders</h2>
+    <hr />
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BuyProduct.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.UserType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Recieved)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecievedDate)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BuyProduct.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.UserType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Recieved)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecievedDate)
+        </td>
+       
+    </tr>
+}
+
+</table>

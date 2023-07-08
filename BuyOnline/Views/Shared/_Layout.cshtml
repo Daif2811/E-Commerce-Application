@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Buy Online Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Buy Online", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.Partial("_CategoryPartial")</li>
+                    <li>
+                        @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+                        {
+                            <input type="text" name="SearchName" placeholder="Search here" id="SearchName" />
+                        }
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="container body-content" style="min-height:500px;">
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+
+    <hr />
+
+
+
+    <footer class="navbar navbar-inverse myfooter">
+        <br />
+        <div class="container">
+
+
+
+            <div class="row">
+
+
+
+                <div class="col-md-4 foot">
+                    <h3>
+                        <i class="glyphicon glyphicon-question-sign"></i>
+                        Who are us ?
+                    </h3>
+                    <p>
+                        In the previous tutorial you displayed related data. In this tutorial you'll
+                        update related data. For most relationships,
+                        this can be done by updating either foreign key fields or
+                    </p>
+                </div>
+
+
+
+
+
+                <div class="col-md-4 foot">
+                    <h3>
+                        <i class="glyphicon glyphicon-link"></i>
+                        Important links
+                    </h3>
+                    <ul>
+                        <li><a href="#">Public sector jobs</a></li>
+                        <li><a href="#">Private sector jobs</a></li>
+                        <li><a href="#">Jobs abroad</a></li>
+                        <li><a href="#">Miscellaneous jobs</a></li>
+                    </ul>
+                </div>
+
+
+
+
+
+
+                <div class="col-md-4 foot">
+                    <h3>
+                        <i class="glyphicon glyphicon-envelope"></i>
+                        Contact Us
+                    </h3>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">FaceBook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Youtube</a></li>
+                    </ul>
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+
+            <div class="row text-center subfooter">
+                <hr />
+                <p>Al rights reserved to Buy Online site.</p>
+                <p>&copy; @DateTime.Now.Year - Buy Online Application</p>
+
+            </div>
+
+
+        </div>
+
+    </footer>
+
+
+
+
+
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

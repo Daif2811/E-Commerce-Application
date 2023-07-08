@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BuyOnline.Models.RecievedProduct>
+
+
+<div class="row">
+    <h2 class="text-center page-header" style="background-color:black; color:white; padding:10px;">Recieved Orders</h2>
+    <hr />
+</div>
+
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+    <div class="col-md-3 thumbnail">
+       
+            <img src="~/Images/Products/@Html.DisplayFor(model => item.BuyProduct.Product.ProductImage)" alt="Image" style="height:340px;" class="thumbnail"/>
+            <h3>@Html.DisplayFor(model => item.BuyProduct.Product.ProductName)</h3>
+            <h3><strong>Price : </strong> @Html.DisplayFor(model => item.BuyProduct.Product.ProductPrice) LE</h3>
+            <h5><strong>Buy Date : </strong> @Html.DisplayFor(model => item.BuyProduct.BuyDate)</h5>
+            <h5><strong>Recieved Date : </strong>  @Html.DisplayFor(model => item.RecievedDate)</h5>
+    </div>
+    }
+</div>
+
+<hr />
+<div class="row">
+    @Html.ActionLink("Back To My Orders", "MyOrders", "BuyProduct", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back To Home", "Index", "Home", null, new { @class = "btn btn-warning" })
+
+
+</div>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BuyOnline.Models.Category>
+
+@{
+    ViewBag.Title = "Buy Online";
+}
+
+<div class="jumbotron row" style="background-color:darkgray; color:black;">
+    <h1>Buy Online</h1>
+    <p class="lead">Welcome dear visitor..<i class="glyphicon glyphicon-asterisk"></i> </p>
+    <p>
+        If you are a saler <i class="glyphicon glyphicon-user"></i> You can earn alot of money with us <i class="glyphicon glyphicon-credit-card"></i> ...
+        <br />If you are a customer <i class="glyphicon glyphicon-user"></i>  You can buy online from here quickly <i class="glyphicon glyphicon-ok"></i> ..
+    </p>
+</div>
+
+
+
+
+
+
+@foreach (var categ in Model)
+{
+    if (categ.Products.Count > 0)
+    {
+        <div class="panel panel-group">
+            <div class="row">
+                <h1 class="text-primary panel-heading" style="background-color:black; color:white;">@Html.DisplayFor(modelItem => categ.CategoryName)</h1>
+                <h5 class="text-primary">@Html.DisplayFor(modelItem => categ.CategoryDescription)</h5>
+            </div>
+            <div class="row">
+                @foreach (var item in categ.Products)
+                {
+                    <div class="col-md-3 thumbnail">
+                        <img src="~/Images/Products/@Html.DisplayFor(modelItem => item.ProductImage)" style="height:340px;" />
+                        <h3>@Html.DisplayFor(modelItem => item.ProductName)</h3>
+                        <h5>@Html.Raw(HttpUtility.HtmlDecode(Html.DisplayFor(modelItem => item.ProductDescription).ToString()))</h5>
+                        <h3>Price : @Html.DisplayFor(modelItem => item.ProductPrice) LE</h3>
+                        @Html.ActionLink("Details", "Details","BuyProduct", new { id = item.ProductId }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Buy Now", "BuyProduct", "BuyProduct", new { id = item.ProductId }, new { @class = "btn btn-success" })
+                    </div>
+                }
+            </div>
+        </div>
+        <hr />
+
+    }
+}

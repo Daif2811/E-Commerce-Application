@@ -1,0 +1,32 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="row">
+    <h2 class="text-center page-header" style="background-color:black; color:white; padding:10px;">Details</h2>
+    <hr />
+</div>
+
+<div class="row">
+       
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+        </dl>
+    </div>
+<div class="row">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { @class = "btn btn-danger" })
+<hr />
+</div>
+
+<div class="row">
+        @Html.ActionLink("Back To Roles", "Index", null, new { @class = "btn btn-warning" })
+</div>

@@ -1,0 +1,51 @@
+﻿@model BuyOnline.Models.RecievedProduct
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="row">
+    <h2 class="text-center page-header" style="background-color:black; color:white; padding:10px;">Details</h2>
+    <hr />
+</div>
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BuyProduct.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuyProduct.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.UserType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.UserType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Recieved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recieved)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecievedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecievedDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

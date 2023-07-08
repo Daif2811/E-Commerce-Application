@@ -1,0 +1,113 @@
+﻿@model IEnumerable<BuyOnline.Models.Product>
+
+@{
+    ViewBag.Title = "AllProductsBySeller";
+}
+<div class="row">
+    <h2 class="text-center page-header" style="background-color:black; color:white; padding:10px;">All My Products</h2>
+    <hr />
+</div>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "Product", new { @class = "btn btn-success" })
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductQuantity)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.ProductPrice)*@
+            Price
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.ProductQuantity == 0)
+        {
+            <tr style="background-color:red; color:white;">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductDescription)
+                </td>
+                <td>
+                    <img src="~/Images/Products/@Html.DisplayFor(modelItem => item.ProductImage)" class="thumbnail" style="width:50px; height:70px;" />
+                </td>
+                <td>
+                    Not Available
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductPrice) LE
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductId }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+
+        }
+        else
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDescription)
+            </td>
+            <td>
+                <img src="~/Images/Products/@Html.DisplayFor(modelItem => item.ProductImage)" class="thumbnail" style="width:50px; height:70px;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice) LE
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProductId }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+        }
+    }
+
+</table>
+
+<hr />
+<div class="row">
+    <a href="~/Home/Index" class="btn btn-success">Back To Home</a>
+    <a href="~/RecievedProduct/RecievedForSeller" class="btn btn-warning">Your Recieved Orders</a>
+    <a href="~/Product/PendingOrders" class="btn btn-warning">Your Pending Orders</a>
+
+
+</div>

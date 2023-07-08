@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BuyOnline.Models.BuyProduct>
+
+@{
+    ViewBag.Title = "CustomerBuyings";
+}
+<div class="row">
+    <h2 class="panel-heading text-center" style="background-color:black; color:white; color:black;">Customer Buyings</h2>
+    <hr />
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 thumbnail" style="margin:20px;">
+            <img src="~/Images/Products/@Html.DisplayFor(modelItem => item.Product.ProductImage)" style="height:340px;" />
+            <h3>@Html.DisplayFor(modelItem => item.Product.ProductName)</h3>
+            <h5>@Html.DisplayFor(modelItem => item.Product.ProductDescription)</h5>
+            <h3><strong>Price : </strong>@Html.DisplayFor(modelItem => item.Product.ProductPrice) LE</h3>
+            <h3><strong>Address : </strong>@Html.DisplayFor(modelItem => item.Address)</h3>
+            <h3><strong>Quantity : </strong>@Html.DisplayFor(modelItem => item.Quantity)</h3>
+            <h3><strong>Date : </strong>@Html.DisplayFor(modelItem => item.BuyDate)</h3>
+            <h3><strong>Rating : </strong>@for (int i = 0; i < item.Rating; i++) { <span class="glyphicon glyphicon-star" style="color:yellow;"></span>}
+         
+              </div>
+    }
+</div>
+
+
+
+<div class="row">
+    @Html.ActionLink("Back To Customers", "Customers", null, new { @class = "btn btn-warning" })
+
+</div>
+
+
+
+
+

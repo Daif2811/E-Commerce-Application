@@ -1,0 +1,107 @@
+﻿@model IEnumerable<BuyOnline.Models.BuyViewModel>
+
+@{
+    ViewBag.Title = "SoldProductsBySeller";
+}
+
+
+<div class="row">
+    <h2 class="text-center page-header" style="background-color:black; color:white; padding:10px;">Pending Orders</h2>
+    <hr />
+</div>
+
+
+<table class="table table-bordered">
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <th colspan="9" style="background-color:darkgray;"><h3>@item.ProductName</h3> </th>
+        </tr>
+            <tr>
+                <th>
+                    Customer Name
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Address
+                </th>
+                <th>
+                    Phone Number
+                </th>
+                <th>
+                    Buy Date
+                </th>
+                <th>
+                    Message
+                </th>
+                <th>
+                    Rating
+                </th>
+                <th>
+                    Pay
+                </th>
+                <th>
+
+                </th>
+            </tr>
+
+        foreach (var x in item.Persons)
+        {
+            if (x.Pay == false)
+            {
+
+                <tr>
+                    <td>
+                        @x.User.UserName
+                    </td>
+                    <td>
+                        @x.Quantity
+                    </td>
+                    <td>
+                        @x.Address
+                    </td>
+                    <td>
+                        @x.PhoneNumber
+                    </td>
+                    <td>
+                        @x.BuyDate
+                    </td>
+                    <td>
+                        @x.Message
+                    </td>
+                    <td style="color:yellow">
+
+
+                        @for (int i = 0; i < (int)x.Rating; i++)
+                        {
+                            <span class="glyphicon glyphicon-star"></span>
+                        }
+                    </td>
+                    <td>
+                        @x.Pay
+                    </td>
+                    <td>
+                        @Html.ActionLink("Select", "Create", "RecievedProduct", new { id = x.Id }, new { @class = "btn btn-Success" })
+                    </td>
+                </tr>
+            }
+        }
+        <tr style="background-color:black;">
+            <td colspan="9">---------------------------</td>
+        </tr>
+
+    }
+</table>
+
+<hr />
+<div class="row">
+    @Html.ActionLink("Back To Your Products", "AllProductsBySeller", null, new { @class = "btn btn-warning" })
+    <a href="~/Home/Index" class="btn btn-success">Back To Home</a>
+
+</div>
+
+

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<BuyOnline.Models.Product>
+
+@{
+    ViewBag.Title = "Products";
+}
+<div class="row">
+<h2 class="panel-heading text-center" style="background-color:black; color:white; padding:10px;">Products</h2>
+<hr />
+
+<p>
+    @Html.ActionLink("Create New", "Create", null ,  new { @class = "btn btn-success" })
+</p>
+</div>
+<div class="row">
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>
+                Category
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductQuantity)
+            </th>
+
+            <th>
+                @*@Html.DisplayNameFor(model => model.ProductPrice)*@
+                Price
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductDescription)
+                </td>
+                <td>
+                    <img src="~/Images/Products/@Html.DisplayFor(modelItem => item.ProductImage)" style="width:50px; height:50px;" class="thumbnail" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductQuantity)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductPrice) LE
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductId }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<hr />
+<div class="row">
+    @Html.ActionLink("Back To Home", "Index", "Home",null, new { @class = "btn btn-warning" })
+</div>

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<BuyOnline.Models.Product>
+
+@{
+    ViewBag.Title = "SellerProducts";
+}
+<div class="row">
+     <h2 class="panel-heading text-center" style="background-color:black; color:white; color:black;">Seller Products</h2>
+   <hr />
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 thumbnail" style="margin-bottom:20px;">
+              <img src="~/Images/Products/@Html.DisplayFor(modelItem => item.ProductImage)" style="height:340px;" />
+             <h3>@Html.DisplayFor(modelItem => item.ProductName)</h3>
+            <h5>@Html.DisplayFor(modelItem => item.ProductDescription)</h5>
+            <h3><strong>Price : </strong>@Html.DisplayFor(modelItem => item.ProductPrice) LE</h3>
+            @Html.ActionLink("Details", "Details","Home", new { id = item.ProductId}, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>
+
+
+
+<div class="row">
+    @Html.ActionLink("Back To Sellers", "Sellers",null, new {@class="btn btn-warning" })
+
+</div>

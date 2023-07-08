@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BuyOnline.Models.BuyProduct>
+
+
+@{
+    ViewBag.Title = "MyBuying";
+}
+
+<div class="row">
+    <h2 class="text-center page-header" style="background-color:black; color:white; padding:10px;">My Orders</h2>
+    <hr />
+</div>
+
+
+<div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            if (item.Pay == false)
+            {
+
+            <div class="col-md-3 thumbnail">
+                <img src="~/Images/Products/@Html.DisplayFor( a => item.Product.ProductImage)" style="height:340px;" />
+                <h3>@Html.DisplayFor(a => item.Product.ProductName)</h3>
+                <h5>@Html.DisplayFor(a => item.Product.ProductDescription)</h5>
+                <h3>Price : @Html.DisplayFor(a => item.Product.ProductPrice) LE</h3>
+                @Html.ActionLink("Details", "DetailsMyBuy", new { id = item.Product.ProductId }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Delete", "CancelBuy", new { id = item.Product.ProductId }, new { @class = "btn btn-danger" })
+
+
+
+
+                @*<h3>Quantity : @Html.DisplayFor(a => item.BuyProducts.Quantity)</h3>*@
+            </div>
+
+            }
+
+
+        }
+    </div>
+
+
+    <hr />
+
+    <div class="row">
+        @Html.ActionLink("Back To Home", "Index", "Home", null, new { @class = "btn btn-warning" })
+    </div>
+</div>

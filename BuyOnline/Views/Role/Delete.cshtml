@@ -1,0 +1,33 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="row">
+    <h2 class="text-center page-header" style="background-color:black; color:white; padding:10px;">Details</h2>
+    <hr />
+</div>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back To Roles", "Index", null, new { @class="btn btn-warning"})
+        </div>
+    }
+</div>

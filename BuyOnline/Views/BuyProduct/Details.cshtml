@@ -1,0 +1,83 @@
+﻿@model BuyOnline.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row">
+<h2 class="text-center page-header" style="background-color:black; color:white; padding:10px;">Details</h2>
+    <hr />
+</div>
+
+
+<div>
+    
+    <hr />
+
+
+    <div style="color:green">
+        @{
+            if (ViewBag.Cart != null)
+            {
+                <h3>@ViewBag.Cart</h3>
+            }
+        }
+        </div>
+        
+        <dl class="dl-horizontal">
+
+
+            <dt>
+                @*@Html.DisplayNameFor(model => model.ProductName)*@
+                Product Name
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+
+            <dt>
+                @*@Html.DisplayNameFor(model => model.ProductDescription)*@
+                Description
+
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductDescription)
+            </dd>
+
+
+            <dt>
+                Available quantity
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductQuantity)
+            </dd>
+
+            <dt>
+                @*@Html.DisplayNameFor(model => model.ProductPrice)*@
+                Price :
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductPrice) LE
+            </dd>
+            <dt></dt>
+            <dd><hr /></dd>
+
+            <dt>
+
+            </dt>
+
+            <dd>
+                <img src="~/Images/Products/@Html.DisplayFor(model => model.ProductImage)" class="thumbnail" style="width:250px; height:340px;" />
+            </dd>
+        </dl>
+    </div>
+
+<p>
+    @Html.ActionLink("Buy Now", "BuyProduct", new { id = Model.ProductId } , new { @class="btn btn-success"}) |
+    @Html.ActionLink("Add To Cart", "AddToCart", new { id = Model.ProductId }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Back To Home", "Index","Home", null, new { @class = "btn btn-warning" })
+</p>
