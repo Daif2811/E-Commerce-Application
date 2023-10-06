@@ -15,6 +15,8 @@
 
     @foreach (var item in Model)
     {
+        if (item.Persons.Count()>0)
+        {
 
         <tr>
             <th colspan="9" style="background-color:darkgray;"><h3>@item.ProductName</h3> </th>
@@ -94,6 +96,7 @@
             <td colspan="9">---------------------------</td>
         </tr>
 
+        }
     }
 </table>
 

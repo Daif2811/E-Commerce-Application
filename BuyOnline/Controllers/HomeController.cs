@@ -67,9 +67,5 @@ namespace BuyOnline.Controllers
 
 
 
-
-
-
-
     }
 }
